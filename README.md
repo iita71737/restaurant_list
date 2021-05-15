@@ -2,6 +2,7 @@
 A simple web application about E-commerce web 
 Use **Node.js** , **Express.js** and **Express-handlebars** to build in
 
+(https://github.com/iita71737/restaurant_list/public/img/login.JPG)
 
 ## Features
 - listing restaurants from **restaurant.json** file
