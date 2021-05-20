@@ -51,6 +51,15 @@ app.get('/', (req, res) => {
 //     res.render('view', { restlist: rests,  keyword: keyword})
 // })
 
+app.get('/search', (req, res) => {
+    const keyword = req.query.keyword
+    Rest.find( {name :new RegExp(keyword, 'i')} , function (err,docs) { 
+    })
+    .lean()
+    .then( restlist => res.render('view', { restlist } ))
+    .catch(error => console.error(error))
+})
+
 app.post('/rests', (req, res) => {
   const data = req.body
   const imgurl = '/public/image/restlist/' 
