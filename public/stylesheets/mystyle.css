@@ -14,11 +14,14 @@ header {
   position: relative;
   z-index: -1;
   margin: -5px;
-  height: 360px;
-  background: #dddddd center center
-    url("https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg");
-  background-size: cover;
-  filter: blur(3px);
+  height: 240px;
+  background: #e5e0dd center center
+    url("https://images.unsplash.com/photo-1471286274405-579f8d7132d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+  /* url("https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg"); */
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform: rotateX(180deg);
+  /* filter: blur(3px); */
 }
 
 .search-bar .search-bar-outer {
