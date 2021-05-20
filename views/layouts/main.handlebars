@@ -21,17 +21,111 @@
                     width="30" height="30" class="d-inline-block align-top" alt="好。吃">
                 我的餐廳清單
             </a>
+            <div>
+                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">新增餐廳</button>
+            </div>
         </div>
+        
     </nav>
 
     <div class="banner"></div>
 </header>
+
+<!-- Modal -->
+<form action="/rests" method="POST">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">新增餐廳表單</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body addnewform">
+                    <div class="">
+                        
+                            <div class="form-group ">
+                                <label for="exampleInput1">餐廳中文名稱</label>
+                                <input type="text" class="form-control" id="exampleInput1" aria-describedby="emailHelp"
+                                    placeholder="輸入中文名稱..." name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput2">餐廳英文名稱(選填)</label>
+                                <input type="text" class="form-control" id="exampleInput2" placeholder="Enter English Name..." name="name_en">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputState">餐廳類型</label>
+                                <select id="inputState" class="form-control" name="category">
+                                    <option selected>Choose...</option>
+                                    <option>日式</option>
+                                    <option>中東</option>
+                                    <option>義式</option>
+                                    <option>美式</option>
+                                    <option>酒吧</option>
+                                    <option>咖啡</option>
+                                    <option>小吃</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">上傳餐廳圖片</label>
+                                <input type="file" id="file-uploader" data-target="file-uploader" accept="image/*" multiple="multiple" name="image" />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput2">餐廳地址</label>
+                                <input type="text" class="form-control" id="exampleInput2" placeholder="輸入餐廳地址..." name="location">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput2">連絡電話</label>
+                                <input type="text" class="form-control" id="exampleInput2" placeholder="輸入連絡電話..." name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInput2">餐廳GoogleMap位址</label>
+                                <input type="text" class="form-control" id="exampleInput2" placeholder="Enter GoogleMap ..." name="google_map">
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <label for="exampleInput2">評比分數</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="rating" id="inlineRadio1"
+                                        value="5">
+                                    <label class="form-check-label" for="inlineRadio1">5</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="rating" id="inlineRadio2"
+                                        value="4">
+                                    <label class="form-check-label" for="inlineRadio2">4</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="rating" id="inlineRadio3" value="3"
+                                        disabled>
+                                    <label class="form-check-label" for="inlineRadio3">3</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">餐廳描述</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
+
 <!-- partial templates will replace the part of "body" here -->
 {{{ body }}}
 
 <script src="/javascripts/jquery-3.3.1.js"></script>
 <script src="/javascripts/popper.js"></script>
 <script src="/javascripts/bootstrap.js"></script>
+<script src="/public/javascripts/myjs.js"></script>
 </body>
 
 </html>

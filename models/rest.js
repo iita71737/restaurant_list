@@ -1,9 +1,10 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+require('mongoose-type-url')
+
 const restSchema = new Schema({
     id : {
         type: Number,
-        required: true 
     },
     name: {
         type: String, 
@@ -15,8 +16,8 @@ const restSchema = new Schema({
     category: {
         type: String
     },
-    image: {
-        type: String
+    image: { 
+        type: String,
     },
     location: {
         type: String

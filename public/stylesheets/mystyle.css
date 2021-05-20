@@ -14,14 +14,11 @@ header {
   position: relative;
   z-index: -1;
   margin: -5px;
-  height: 240px;
-  background: #e5e0dd center center
-    url("https://images.unsplash.com/photo-1471286274405-579f8d7132d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
-  /* url("https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg"); */
-  background-size: contain;
-  background-repeat: no-repeat;
-  transform: rotateX(180deg);
-  /* filter: blur(3px); */
+  height: 360px;
+  background: #dddddd center center
+    url("https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5720/restaurants-list-cover.jpg");
+  background-size: cover;
+  filter: blur(3px);
 }
 
 .search-bar .search-bar-outer {
@@ -58,6 +55,16 @@ header {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
+.card img {
+  height: 180px;
+}
+
+.card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .restaurant-category {
   color: #666666;
   font-size: 0.8rem;
@@ -72,8 +79,35 @@ header {
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+@media screen and (max-width: 992px) {
+  .card img {
+    height: 115px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .restaurant-show-title {
     font-size: 2rem;
   }
+}
+
+@media screen and (max-width: 575px) {
+  .card img {
+    height: auto;
+  }
+}
+
+.addnewform {
+  position: relative;
+  background: #dddddd center center;
+  margin: 5px;
+  z-index: 1;
+  background: url("https://images.unsplash.com/photo-1522441815192-d9f04eb0615c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=564&q=80");
+  background-size: cover;
+}
+
+.editpage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
