@@ -6,7 +6,8 @@ const port = 3000
 // require handlebars in the project
 const exphbs = require('express-handlebars')
 //require json file in the project
-const restaurantList = require('./restaurant.json')
+//const restaurantList = require('./restaurant.json')
+const Rest = require('./models/rest')
 //require mongoose
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }) // connect localhost mongodb
@@ -27,7 +28,11 @@ app.use(express.static('public'))
 
 //routes setting
 app.get('/', (req, res) => {
-    res.render('view', { restlist : restaurantList.results})
+   //res.render('view', { restlist : restaurantList.results})
+    Rest.find()
+    .lean()
+    .then( restlist => res.render('view', { restlist } ))
+    .catch(error => console.error(error))
 })
 
 app.get('/restaurants/:id', (req, res) => {
