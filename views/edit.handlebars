@@ -40,25 +40,15 @@
                         <input type="text" class="form-control" id="exampleInput2" placeholder="Enter GoogleMap ..." name="google_map" value="{{ rest.google_map}}"> 
                     </div>
                     <div class="form-group">
-                        <div>
-                            <label for="exampleInput2">評比分數</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating" id="inlineRadio1" value="5">
-                            <label class="form-check-label" for="inlineRadio1">5</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating" id="inlineRadio2" value="4">
-                            <label class="form-check-label" for="inlineRadio2">4</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="rating" id="inlineRadio3" value="3" disabled>
-                            <label class="form-check-label" for="inlineRadio3">3</label>
+                        <div class="editrating">
+                            <label for="customRange1">評比分數</label>
+                            <input type="range" class="range-rgb-ragint" min="0" max="5" step="0.1" name="rating" value="{{ rest.rating}}" >
+                            <input type="number" class="form-control rgb-rating-text" placeholder="4.5" value="{{ rest.rating}}" disabled>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">餐廳描述</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="descripction" >{{rest.description}}</textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" >{{rest.description}}</textarea>
                     </div>
                 
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -1,0 +1,35 @@
+$inputWidth: 200;
+
+@function getProgress($inputWidth, $color) {
+  $val: -5px 0 0 -10px $color;
+  @for $i from 6 through $inputWidth {
+    $val: #{$val}, -#{$i}px 0 0 -10px #{$color};
+  }
+  @return $val;
+}
+
+input[type="range"] {
+  margin: auto;
+  -webkit-appearance: none;
+  outline: none;
+  overflow: hidden;
+  height: 40px;
+  width: #{$inputWidth}px;
+  cursor: pointer;
+  border-radius: 0;
+  &::-webkit-slider-runnable-track {
+    background: #ddd;
+    height: 20px;
+  }
+  &::-webkit-slider-thumb {
+    margin-top: -10px;
+    -webkit-appearance: none;
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    box-shadow: getProgress($inputWidth, #69eaab);
+    border: 2px solid #999;
+    border-radius: 50%;
+    // transform: translatex(2px)
+  }
+}

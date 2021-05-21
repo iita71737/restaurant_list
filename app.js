@@ -5,6 +5,10 @@ const app = express()
 const port = 3000
 // require handlebars in the project
 const exphbs = require('express-handlebars')
+
+const Handlebars = require('handlebars');
+const H = require('just-handlebars-helpers')
+H.registerHelpers(Handlebars)
 //require json file in the project
 //const restaurantList = require('./restaurant.json')
 const Rest = require('./models/rest')
@@ -89,6 +93,7 @@ app.get('/restaurants/:id', (req, res) => {
 
 app.get('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
+  const { name, isCheck } = req.body
   Rest.findById(id)
     .lean()
     .then((rest) => res.render('edit', { rest }))
@@ -98,16 +103,17 @@ app.get('/restaurants/:id/edit', (req, res) => {
 app.post('/restaurants/:id/edit', (req, res) => {
   const id = req.params.id
   const data = req.body
+  console.log(req.body) 
   Rest.findById(id)
     .then(rest => {
         rest.name = data.name,
         rest.name_en = data.name_en,
-        //rest.category = data.category,
-        //rest.image = imgurl + data.image,
+        rest.category = data.category,
+        rest.image = data.image,
         rest.location = data.location,
         rest.phone = data.phone,
         rest.google_map = data.google_map,
-        //rest.rating = data.rating,
+        rest.rating = data.rating,
         rest.description = data.description   
       return rest.save()
     })

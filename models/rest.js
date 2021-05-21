@@ -29,10 +29,14 @@ const restSchema = new Schema({
         type: String
     },
     rating:{
-        type:Number
+        type: Number
     },
     description:{
-        type:String
+        type: String
+    },
+    isCheck: {
+        type: Boolean,
+        default : false
     }
 })
 
