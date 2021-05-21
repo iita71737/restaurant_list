@@ -1,6 +1,5 @@
-// app.js
-// require packages used in the project
 const express = require('express')
+const routes = require('./routes')
 const app = express()
 const port = 3000
 // require handlebars in the project
@@ -33,15 +32,7 @@ app.set('view engine', 'handlebars')
 // setting static files
 app.use(express.static('public'))
 
-//routes setting
-app.get('/', (req, res) => {
-   //res.render('view', { restlist : restaurantList.results})
-    Rest.find()
-    .lean()
-    .sort({ _id: 'desc' })
-    .then( restlist => res.render('view', { restlist } ))
-    .catch(error => console.error(error))
-})
+app.use(routes)
 
 app.get('/search', (req, res) => {
     const keyword = req.query.keyword
