@@ -38,22 +38,10 @@ app.get('/', (req, res) => {
    //res.render('view', { restlist : restaurantList.results})
     Rest.find()
     .lean()
+    .sort({ _id: 'desc' })
     .then( restlist => res.render('view', { restlist } ))
     .catch(error => console.error(error))
 })
-
-// app.get('/restaurants/:id', (req, res) => {
-//     const restaurant = restaurantList.results.find(rest => rest.id.toString() === req.params.id)
-//     res.render('show', { rest :restaurant})
-// })
-
-// app.get('/search', (req, res) => {
-//     const keyword = req.query.keyword
-//     const rests = restaurantList.results.filter(rest => {
-//         return rest.name.toLowerCase().includes(keyword.toLowerCase())
-//     })
-//     res.render('view', { restlist: rests,  keyword: keyword})
-// })
 
 app.get('/search', (req, res) => {
     const keyword = req.query.keyword
@@ -72,7 +60,7 @@ app.post('/rests', (req, res) => {
         name:data.name,
         name_en:data.name_en,
         category:data.category,
-        image: imgurl + data.image,
+        image:data.image,
         location:data.location,
         phone:data.phone,
         google_map:data.google_map,
@@ -100,7 +88,7 @@ app.get('/restaurants/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:id/edit', (req, res) => {
+app.put('/restaurants/:id', (req, res) => {
   const id = req.params.id
   const data = req.body
   console.log(req.body) 
@@ -122,7 +110,7 @@ app.post('/restaurants/:id/edit', (req, res) => {
 })
 
 
-app.post('/restaurants/:id/delete', (req, res) => {
+app.delete('/restaurants/:id', (req, res) => {
   const id = req.params.id
   Rest.findById(id)
     .then(rest => rest.remove())

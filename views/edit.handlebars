@@ -1,5 +1,5 @@
 <div class="editpage">
-    <form action="/restaurants/{{ rest._id}}/edit" method="POST">
+    <form action="/restaurants/{{ rest._id}}?_method=PUT" method="POST">
                     <div class="form-group ">
                         <label for="exampleInput1">餐廳中文名稱</label>
                         <input type="text" class="form-control" id="exampleInput1" aria-describedby="emailHelp" placeholder="輸入中文名稱..."
@@ -13,19 +13,21 @@
                         <label for="inputState">餐廳類型</label>
                         <select id="inputState" class="form-control" name="category">
                             <option selected>Choose...</option>
-                            <option>日式</option>
-                            <option>中東</option>
-                            <option>義式</option>
-                            <option>美式</option>
-                            <option>酒吧</option>
-                            <option>咖啡</option>
-                            <option>小吃</option>
+                            <option {{#if rest.category }} SELECTED {{/if}}>日式</option>
+                            <option {{#if rest.category }} SELECTED {{/if}}>中東</option>
+                            <option {{#if rest.category }} SELECTED {{/if}}>義式</option>
+                            <option {{#if rest.category }} SELECTED {{/if}}>美式</option>
+                            <option {{#if rest.category }} SELECTED {{/if}}>酒吧</option>
+                            <option {{#if rest.category }} SELECTED {{/if}}>咖啡</option>
+                            <option {{#if rest.category }} SELECTED {{/if}}>小吃</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlFile1">上傳餐廳圖片</label>
                         <input type="file" id="file-uploader" data-target="file-uploader" accept="image/*" multiple="multiple"
-                            name="image" value="{{ rest.image}}"/>
+                            name=""/>
+                            <input type="hidden" name="image"
+                                value="https://wowlavie-aws.hmgcdn.com/file/article_all/%E5%A4%A9%E7%AB%BA%E9%BC%A0%E8%BB%8A%E8%BB%8A006.jpg" >
                     </div>
                     <div class="form-group">
                         <label for="exampleInput2">餐廳地址</label>
