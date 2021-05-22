@@ -11,5 +11,16 @@ router.get('/', (req, res) => {
     .then( restlist => res.render('view', { restlist } ))
     .catch(error => console.error(error))
 })
+
+router.get('/search', (req, res) => {
+    const keyword = req.query.keyword
+    Rest.find( {name :new RegExp(keyword, 'i')} , function (err,docs) { 
+    })
+    .lean()
+    .then( restlist => res.render('view', { restlist } ))
+    .catch(error => console.error(error))
+})
+
+
 // 匯出路由模組
 module.exports = router

@@ -11,17 +11,8 @@ H.registerHelpers(Handlebars)
 //require json file in the project
 //const restaurantList = require('./restaurant.json')
 const Rest = require('./models/rest')
-//require mongoose
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true }) // connect localhost mongodb
 
-const db = mongoose.connection //check connection
-db.on('error', () => {
-    console.log('mongodb error!')
-})//db error
-db.once('open', () => {
-    console.log('mongodb connected!')
-})
+require('./config/mongoose')
 
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(express.urlencoded({ extended: true }))
@@ -33,81 +24,6 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 app.use(routes)
-
-app.get('/search', (req, res) => {
-    const keyword = req.query.keyword
-    Rest.find( {name :new RegExp(keyword, 'i')} , function (err,docs) { 
-    })
-    .lean()
-    .then( restlist => res.render('view', { restlist } ))
-    .catch(error => console.error(error))
-})
-
-app.post('/rests', (req, res) => {
-  const data = req.body
-  const imgurl = '/public/image/restlist/' 
-  console.log(req.body) 
-    Rest.create({ 
-        name:data.name,
-        name_en:data.name_en,
-        category:data.category,
-        image:data.image,
-        location:data.location,
-        phone:data.phone,
-        google_map:data.google_map,
-        rating:data.rating,
-        description: data.description
-    })     // 存入資料庫
-    .then(() => res.redirect('/')) // 新增完成後導回首頁
-    .catch(error => console.log(error))
-})
-
-app.get('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  Rest.findById(id)
-    .lean()
-    .then((rest) => res.render('show', { rest }))
-    .catch(error => console.log(error))
-})
-
-app.get('/restaurants/:id/edit', (req, res) => {
-  const id = req.params.id
-  const { name, isCheck } = req.body
-  Rest.findById(id)
-    .lean()
-    .then((rest) => res.render('edit', { rest }))
-    .catch(error => console.log(error))
-})
-
-app.put('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  const data = req.body
-  console.log(req.body) 
-  Rest.findById(id)
-    .then(rest => {
-        rest.name = data.name,
-        rest.name_en = data.name_en,
-        rest.category = data.category,
-        rest.image = data.image,
-        rest.location = data.location,
-        rest.phone = data.phone,
-        rest.google_map = data.google_map,
-        rest.rating = data.rating,
-        rest.description = data.description   
-      return rest.save()
-    })
-    .then(()=> res.redirect(`/restaurants/${id}`))
-    .catch(error => console.log(error))
-})
-
-
-app.delete('/restaurants/:id', (req, res) => {
-  const id = req.params.id
-  Rest.findById(id)
-    .then(rest => rest.remove())
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
 
 // start and listen on the Express server
 app.listen(port, () => {
