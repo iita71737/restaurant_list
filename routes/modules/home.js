@@ -17,7 +17,18 @@ router.get('/search', (req, res) => {
     Rest.find( {name :new RegExp(keyword, 'i')} , function (err,docs) { 
     })
     .lean()
-    .then( restlist => res.render('view', { restlist } ))
+    .then( restlist => res.render('view', { restlist , keyword} ))
+    .catch(error => console.error(error))
+})
+
+router.get('/sort', (req, res) => {
+    const sortobj = eval("("+'req.query.sort'+")")
+    
+    console.log(sortobj)
+    Rest.find()
+    .lean()
+    .sort(sortobj)
+    .then( restlist => res.render('view', { restlist , sortobj} ))
     .catch(error => console.error(error))
 })
 
