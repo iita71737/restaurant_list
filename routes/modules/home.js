@@ -24,7 +24,7 @@ router.get('/search', (req, res) => {
 router.get('/sort', (req, res) => {
     //const sortobj = eval("("+'req.query.sort'+")")
     const sortobj = req.query.sort
-    console.log(typeof(sortobj))
+    //console.log(typeof(sortobj))
     Rest.find()
     .lean()
     .sort(sortobj)

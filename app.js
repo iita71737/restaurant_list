@@ -10,7 +10,6 @@ const H = require('just-handlebars-helpers')
 H.registerHelpers(Handlebars)
 //require json file in the project
 //const restaurantList = require('./restaurant.json')
-const Rest = require('./models/rest')
 
 require('./config/mongoose')
 
