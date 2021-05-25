@@ -1,4 +1,5 @@
 const db = require('../../config/mongoose')
+const Rest = require('../rest')
 
 db.once('open', () => {
     console.log('mongodb connected!')
