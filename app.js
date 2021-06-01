@@ -1,4 +1,5 @@
 const express = require('express')
+const methodOverride = require('method-override')
 const routes = require('./routes')
 const app = express()
 const port = 3000
@@ -22,7 +23,7 @@ app.set('view engine', 'handlebars')
 
 // setting static files
 app.use(express.static('public'))
-
+app.use(methodOverride('_method'))
 app.use(routes)
 
 // start and listen on the Express server
