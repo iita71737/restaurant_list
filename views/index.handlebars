@@ -17,8 +17,8 @@
                         <h4 class="m-2">排序：</h4>
                         <div class="input-group">
                             <select class="form-control" id="exampleFormControlSelect1" onchange="this.form.submit()" name="sort">
-                                <option value="_id" {{#if (eq this.sortObj '_id') }} selected {{/if}}>按 A->Z </option>
-                                <option value="-_id" {{#if (eq this.sortObj '-_id') }} selected {{/if}}>按 Z->A </option>
+                                <option value="name" {{#if (eq this.sortObj 'name') }} selected {{/if}}>按 A->Z </option>
+                                <option value="-name" {{#if (eq this.sortObj '-name') }} selected {{/if}}>按 Z->A </option>
                                 <option value="category" {{#if (eq this.sortObj 'category') }} selected {{/if}}>按 類別 </option>
                                 <option value="location" {{#if (eq this.sortObj 'location')}} selected {{/if}}>按 地區 </option>
                             </select>
