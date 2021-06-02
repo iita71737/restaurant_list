@@ -3,17 +3,15 @@ const methodOverride = require('method-override')
 const routes = require('./routes')
 const app = express()
 const port = 3000
-// require handlebars in the project
+
+
 const exphbs = require('express-handlebars')
 
 const Handlebars = require('handlebars');
 const H = require('just-handlebars-helpers')
 H.registerHelpers(Handlebars)
-//require json file in the project
-//const restaurantList = require('./restaurant.json')
 
 require('./config/mongoose')
-
 
 // 用 app.use 規定每一筆請求都需要透過 body-parser 進行前置處理
 app.use(express.urlencoded({ extended: true }))

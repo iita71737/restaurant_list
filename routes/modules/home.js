@@ -4,31 +4,27 @@ const Rest = require('../../models/rest')
 
 //routes setting
 router.get('/', (req, res) => {
-   //res.render('view', { restlist : restaurantList.results})
     Rest.find()
     .lean()
     .sort({ _id: 'desc' })
-    .then( restlist => res.render('view', { restlist } ))
+    .then( restaurantList => res.render('index', { restaurantList } ))
     .catch(error => console.error(error))
 })
 
 router.get('/search', (req, res) => {
-    const keyword = req.query.keyword
-    Rest.find( {name :new RegExp(keyword, 'i')} , function (err,docs) { 
-    })
+    const keyWord = req.query.keyword
+    Rest.find( {name :new RegExp(keyWord, 'i')})
     .lean()
-    .then( restlist => res.render('view', { restlist , keyword} ))
+    .then( restaurantList => res.render('index', { restaurantList , keyWord} ))
     .catch(error => console.error(error))
 })
 
 router.get('/sort', (req, res) => {
-    //const sortobj = eval("("+'req.query.sort'+")")
-    const sortobj = req.query.sort
-    //console.log(typeof(sortobj))
+    const sortObj = req.query.sort
     Rest.find()
     .lean()
-    .sort(sortobj)
-    .then( restlist => res.render('view', { restlist , sortobj} ))
+    .sort(sortObj)
+    .then( restaurantList => res.render('index', { restaurantList , sortObj} ))
     .catch(error => console.error(error))
 })
 

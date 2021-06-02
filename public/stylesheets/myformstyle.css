@@ -98,7 +98,7 @@ h3 {
   }
 }
 
-.addnewform {
+.add-new-form {
   position: relative;
   background: #dddddd center center;
   margin: 5px;
@@ -107,7 +107,7 @@ h3 {
   background-size: cover;
 }
 
-.editpage {
+.edit-page {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -115,4 +115,8 @@ h3 {
 
 .cards {
   display: flex;
+}
+
+.setting-btn {
+  padding-left: 6%;
 }

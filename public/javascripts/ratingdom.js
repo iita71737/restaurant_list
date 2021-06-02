@@ -6,9 +6,9 @@ left.addEventListener('input', function(event) {
   event.target.parentElement.children[2].value = event.target.value
 })
 
-const editrating= document.querySelector('.editrating')
+const editRating= document.querySelector('.edit-rating')
 
-editrating.addEventListener('input', function(event) {
+editRating.addEventListener('input', function(event) {
   event.target.parentElement.children[1].value = event.target.value
   event.target.parentElement.children[2].value = event.target.value
 })

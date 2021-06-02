@@ -5,7 +5,7 @@ const Rest = require('../../models/rest')
 
 router.post('/', (req, res) => {
   const data = req.body
-  const imgurl = '/public/image/restlist/' 
+  
   console.log(req.body) 
     Rest.create({ 
         name:data.name,
@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
   const id = req.params.id
   Rest.findById(id)
     .lean()
-    .then((rest) => res.render('show', { rest }))
+    .then(( restaurant ) => res.render('show', { restaurant }))
     .catch(error => console.log(error))
 })
 
@@ -35,7 +35,7 @@ router.get('/:id/edit', (req, res) => {
   const { name, isCheck } = req.body
   Rest.findById(id)
     .lean()
-    .then((rest) => res.render('edit', { rest }))
+    .then(( restaurant ) => res.render('edit', { restaurant }))
     .catch(error => console.log(error))
 })
 
@@ -44,17 +44,17 @@ router.put('/:id', (req, res) => {
   const data = req.body
   console.log(req.body) 
   Rest.findById(id)
-    .then(rest => {
-        rest.name = data.name,
-        rest.name_en = data.name_en,
-        rest.category = data.category,
-        rest.image = data.image,
-        rest.location = data.location,
-        rest.phone = data.phone,
-        rest.google_map = data.google_map,
-        rest.rating = data.rating,
-        rest.description = data.description   
-      return rest.save()
+    .then(restaurant => {
+        restaurant.name = data.name,
+        restaurant.name_en = data.name_en,
+        restaurant.category = data.category,
+        restaurant.image = data.image,
+        restaurant.location = data.location,
+        restaurant.phone = data.phone,
+        restaurant.google_map = data.google_map,
+        restaurant.rating = data.rating,
+        restaurant.description = data.description   
+      return restaurant.save()
     })
     .then(()=> res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
