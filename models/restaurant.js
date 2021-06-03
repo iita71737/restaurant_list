@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 require('mongoose-type-url')
 
-const restSchema = new Schema({
+const restaurantSchema = new Schema({
     id : {
         type: Number,
     },
@@ -40,4 +40,4 @@ const restSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('Rest', restSchema)
+module.exports = mongoose.model('Restaurant', restaurantSchema)

@@ -1,13 +1,13 @@
 const express = require('express')
 const router = express.Router()
 
-const Rest = require('../../models/rest')
+const Restaurant = require('../../models/restaurant')
 
 router.post('/', (req, res) => {
   const data = req.body
   
   console.log(req.body) 
-    Rest.create({ 
+    Restaurant.create({ 
         name:data.name,
         name_en:data.name_en,
         category:data.category,
@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const id = req.params.id
-  Rest.findById(id)
+  Restaurant.findById(id)
     .lean()
     .then(( restaurant ) => res.render('show', { restaurant }))
     .catch(error => console.log(error))
@@ -32,8 +32,7 @@ router.get('/:id', (req, res) => {
 
 router.get('/:id/edit', (req, res) => {
   const id = req.params.id
-  const { name, isCheck } = req.body
-  Rest.findById(id)
+  Restaurant.findById(id)
     .lean()
     .then(( restaurant ) => res.render('edit', { restaurant }))
     .catch(error => console.log(error))
@@ -42,17 +41,17 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const id = req.params.id
   const data = req.body
-  console.log(req.body) 
-  Rest.findById(id)
+  
+  Restaurant.findById(id)
     .then(restaurant => {
-        restaurant.name = data.name,
-        restaurant.name_en = data.name_en,
-        restaurant.category = data.category,
-        restaurant.image = data.image,
-        restaurant.location = data.location,
-        restaurant.phone = data.phone,
-        restaurant.google_map = data.google_map,
-        restaurant.rating = data.rating,
+        restaurant.name = data.name
+        restaurant.name_en = data.name_en
+        restaurant.category = data.category
+        restaurant.image = data.image
+        restaurant.location = data.location
+        restaurant.phone = data.phone
+        restaurant.google_map = data.google_map
+        restaurant.rating = data.rating
         restaurant.description = data.description   
       return restaurant.save()
     })
@@ -63,8 +62,8 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const id = req.params.id
-  Rest.findById(id)
-    .then(rest => rest.remove())
+  Restaurant.findById(id)
+    .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
