@@ -46,11 +46,11 @@
                 name="google_map" value="{{ restaurant.google_map}}">
         </div>
         <div class="form-group">
-            <div class="edit-rating">
+            <div class="edit-rating2">
                 <label for="customRange1">評比分數</label>
-                <input type="range" class="" min="0" max="5" step="0.1" name="rating" value="{{ restaurant.rating}}">
-                <input type="number" class="form-control rgb-rating-text" placeholder="4.5"
-                    value="{{ restaurant.rating}}" disabled>
+                <input type="range" class="form-range" min="0" max="5" step="0.1" name="rating" value="{{ restaurant.rating}}" id="customRange1">
+                <input type="number" class="form-control rgb-r-text" placeholder="4.5"
+                    value="{{ restaurant.rating}}" disabled >
             </div>
         </div>
         <div class="form-group">
