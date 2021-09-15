@@ -21,7 +21,7 @@ router.post('/register', (req, res) => {
     // 取得註冊表單參數
     const { name, email, password, confirmPassword } = req.body
     const errors = []
-    if (!name || !email || !password || !confirmPassword) {
+    if (!email || !password || !confirmPassword) {
         errors.push({ message: '所有欄位都是必填。' })
     }
     if (password !== confirmPassword) {
@@ -33,19 +33,20 @@ router.post('/register', (req, res) => {
             name,
             email,
             password,
-            confirmPassword
+            confirmPassword,
         })
     }
     // 檢查使用者是否已經註冊
     User.findOne({ email }).then(user => {
         // 如果已經註冊：退回原本畫面
         if (user) {
-            console.log('User already exists.')
+            errors.push({ message: 'User already exists.' })
             res.render('register', {
                 name,
                 email,
                 password,
-                confirmPassword
+                confirmPassword,
+                errors
             })
         } else {
             // 如果還沒註冊：寫入資料庫
