@@ -3,12 +3,12 @@ const Schema = mongoose.Schema
 require('mongoose-type-url')
 
 const restaurantSchema = new Schema({
-    id : {
+    id: {
         type: Number,
     },
     name: {
-        type: String, 
-        required: true 
+        type: String,
+        required: true
     },
     name_en: {
         type: String
@@ -16,7 +16,7 @@ const restaurantSchema = new Schema({
     category: {
         type: String
     },
-    image: { 
+    image: {
         type: String,
     },
     location: {
@@ -28,15 +28,21 @@ const restaurantSchema = new Schema({
     google_map: {
         type: String
     },
-    rating:{
+    rating: {
         type: Number
     },
-    description:{
+    description: {
         type: String
     },
     isCheck: {
         type: Boolean,
-        default : false
+        default: false
+    },
+    userId: {  // 加入關聯設定
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        index: true,
+        required: true
     }
 })
 
