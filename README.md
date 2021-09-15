@@ -29,11 +29,11 @@ Use **Node.js** , **Express.js** and **Express-handlebars** to build in
 ## Installing
 1. Clone this repository to your local computer
 ```
- $git clone https://github.com/Demilululu/Restaurant-List-Plus.git
+ $git clone https://github.com/iita71737/restaurant_list.git
 ```
 2. Enter the file with the downloaded project
 ```
- $cd Restaurant-List-Plus
+ $cd restaurant_list
 ```
 3. Install npm
 ```
